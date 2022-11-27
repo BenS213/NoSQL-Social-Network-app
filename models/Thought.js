@@ -1,35 +1,6 @@
 const { Schema, model, Types } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
-const ThoughtSchema = new Schema(
-  {
-    // set custom id to avoid confusion with parent comment _id
-    ThoughtText: {
-      type: String,
-      required: true,
-      minlength: 1,
-      maxlength: 280,
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
-    },
-    username: {
-      type: String,
-      required: true,
-    },
-    // uses ReactionSchema to populate thought with associated reactions
-    reactions: [ReactionSchema],
-  },
-  {
-    toJSON: {
-      virtuals: true,
-      getters: true,
-    },
-  }
-);
-
 const ReactionSchema = new Schema(
   {
     reactionId: {
@@ -58,6 +29,35 @@ const ReactionSchema = new Schema(
     id: false,
   }
 );
+
+const ThoughtSchema = new Schema(
+  {
+    ThoughtText: {
+      type: String,
+      required: true,
+      minlength: 1,
+      maxlength: 280,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal),
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    // uses ReactionSchema to populate thought with associated reactions
+    reactions: [ReactionSchema],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true,
+    },
+  }
+);
+
 
 ThoughtSchema.virtual("reactionsCount").get(function () {
   return this.replies.length;
