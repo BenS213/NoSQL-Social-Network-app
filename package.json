@@ -1,0 +1,19 @@
+{
+  "name": "javascript-project-template",
+  "version": "1.0.0",
+  "description": "A javascript project template",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenS213/javascript-project-template.git"
+  },
+  "author": "Benjamin Schoenbachler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BenS213/javascript-project-template/issues"
+  },
+  "homepage": "https://github.com/BenS213/javascript-project-template#readme"
+}
