@@ -3,7 +3,7 @@ const dateFormat = require("../utils/dateFormat");
 
 const UserSchema = new Schema(
   {
-    Username: {
+    username: {
       type: String,
       unique: true,
       required: true,
@@ -31,7 +31,6 @@ const UserSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-      getters: true,
     },
     // prevents virtuals from creating duplicate of _id as `id`
     id: false,
